@@ -13,7 +13,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect(process.env.MONGO_DB);
+mongoose.connect('mongodb+srv://woojin:a1058722@woojin.e2zv0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
 var db = mongoose.connection;
 db.once('open', function(){
   console.log('DB connected');
