@@ -23,9 +23,9 @@ router.get('/login', function (req,res) {
 // Post Login
 router.post('/login',
   function(req,res,next){
+    
     var errors = {};
     var isValid = true;
-
     if(!req.body.username){
       isValid = false;
       errors.username = 'Username is required!';
@@ -53,6 +53,7 @@ router.post('/login',
 router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
+  
 });
 
 module.exports = router;
