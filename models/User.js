@@ -25,6 +25,11 @@ var userSchema = mongoose.Schema({
     type:String,
     match:[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,'Should be a vaild email address!'],
     trim:true
+  },
+  card:{
+    type:Buffer,
+    required:[true, '학생증은 필수 입력 값 입니다'],
+    
   }
 },{
   toObject:{virtuals:true}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="container mb-3">
+
+      <h2 class="mb-3">관리자 페이지</h2>
+
+      <P>회원 관리</p>
+        <ul>
+            <% contacts.forEach(function(contact) { %> <!-- 3 -->
+              <li>
+                <%= contact.username %>   <br/>
+                <%= contact.card %>                           
+              </li>
+            <% }) %>
+          </ul>
+
+    </div>
+  </body>
+</html>
