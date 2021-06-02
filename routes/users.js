@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
 var util = require('../util');
+var multer = require('multer');
+var File2 = require('../models/File2');
+var upload = multer({ dest: 'uploadedFiles2/' });
 
 // New
 router.get('/new', function(req, res){
@@ -11,13 +14,25 @@ router.get('/new', function(req, res){
 });
 
 // create
-router.post('/', function(req, res){
-  User.create(req.body, function(err, user){
+router.post('/', upload.single('card'),async function(req, res){
+  console.log('난 req body:', req.body); //출력 잘됨
+ 
+  console.log('난 req.body.user1', req.body.user1  ); //출력안됨
+  var card = req.file ? await File2.createNewInstance(req.file,req.body.user):undefined;
+       req.body.card = card._id;
+      console.log('난 card._id',card._id);
+    User.create(req.body, function(err, user){   
     if(err){
+      console.log('나 req.body', req.body);
       req.flash('user', req.body);
       req.flash('errors', util.parseError(err));
       return res.redirect('/users/new');
-    }
+    }   
+    console.log('난 user._id:', user._id);      
+    card.user= user._id;
+    user.card= card._id;
+    console.log('난 card.user',card.user);
+    console.log('난 user.card:', user.card); //출력 안됨
     res.redirect('/');
   });
 });

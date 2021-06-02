@@ -27,10 +27,13 @@ var userSchema = mongoose.Schema({
     trim:true
   },
   card:{
-    type:Buffer,
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'file2',
     required:[true, '학생증은 필수 입력 값 입니다'],
+  },
+  Value:{type:String, default:'0'},
+  
     
-  }
 },{
   toObject:{virtuals:true}
 });

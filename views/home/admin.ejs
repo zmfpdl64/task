@@ -14,8 +14,9 @@
         <ul>
             <% contacts.forEach(function(contact) { %> <!-- 3 -->
               <li>
-                <%= contact.username %>   <br/>
-                <%= contact.card %>                           
+                <label class="col-sm-1 col-form-label"><storng>아이디 : </storng></label><%= contact.username %>   <br/>
+                <label class="col-sm-1 col-form-label"><storng>이  름 : </storng></label><%= contact.name %><br/>
+                <label class="col-sm-1 col-form-label"><storng>학생증 :</storng> </label><small>📁 <a href="/files2/<%= contact.card.serverFileName %>/<%= contact.card.originalFileName %>"><%= contact.card.originalFileName %></a> (<%= util.bytesToSize(contact.card.size) %>)</small>                         
               </li>
             <% }) %>
           </ul>

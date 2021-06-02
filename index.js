@@ -52,7 +52,9 @@ app.use('/posts', util.getPostQueryString, require('./routes/posts'));
 app.use('/users', require('./routes/users'));
 app.use('/comments', util.getPostQueryString, require('./routes/comments'));
 app.use('/files', require('./routes/files'));
+app.use('/files2', require('./routes/files2'));
 app.use('/admin', require('./routes/admin'));
+
 
 // Port setting
 var port = 3000;
