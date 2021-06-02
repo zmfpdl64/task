@@ -12,11 +12,11 @@ var fileSchema1 = mongoose.Schema({
 });
 
 // instance methods
-fileSchema1.methods.processDelete1 = function(){
+fileSchema1.methods.processDelete = function(){
   this.isDeleted = true;
   this.save();
 };
-fileSchema1.methods.getFileStream1 = function(){
+fileSchema1.methods.getFileStream = function(){
   var stream;
   var filePath = path.join(__dirname,'..','uploadedFiles2',this.serverFileName);
   var fileExists = fs.existsSync(filePath);
@@ -24,7 +24,7 @@ fileSchema1.methods.getFileStream1 = function(){
     stream = fs.createReadStream(filePath);
   }
   else {
-    this.processDelete1();
+    this.processDelete();
   }
   return stream;
 };
