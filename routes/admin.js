@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
 var File2 = require('../models/File2');
+var util = require('../util');
 
 
 router.get('/', function(req, res) {
@@ -17,6 +18,25 @@ router.get('/', function(req, res) {
         return res.json(err);
     })   
     });
+ 
+
+
+    router.get('/management', function(req, res){
+      User.find({}, function(err, users){
+        
+        if(err) return res.json(err);       
+        res.render('home/management', {users:users});
+      });
+    });
+    
+    router.delete('/management/:username',  function(req, res){
+      User.deleteOne({username:req.params.username}, function(err){
+        if(err) return res.json(err);
+        res.redirect('/admin/management');
+      });
+    });
+
+
 
 router.put('/:username', function(req,res) {  
   User.findOneAndUpdate({username:req.params.username}, req.body.Value, function(err, user) {
@@ -32,4 +52,13 @@ router.put('/:username', function(req,res) {
 
   res.redirect('/admin')
  });
+ 
+//  function checkPermission(req, res, next){
+//   User.findOne({username:req.params.username}, function(err, user){
+//     if(err) return res.json(err);
+//     if(user.id != req.user.id) return util.noPermission(req, res);
+
+//     next();
+//   });
+// }
 module.exports = router;

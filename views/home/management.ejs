@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="container mb-3">
+
+      <h2 class="mb-3">회원 추방</h2>
+
+      <P>회원 관리</p>
+        <ul>
+            <% users.forEach(function(user) { %> <!-- 3 -->
+              <li>
+                <label class="col-sm-1 col-form-label"><storng>아이디 : </storng></label><%= user.username %>   <br/>
+                <label class="col-sm-1 col-form-label"><storng>이  름 : </storng></label><%= user.name %><br/>  
+              </li>
+              <form action="/admin/management/<%= user.username %>?_method=delete" method="post" class="d-inline">
+                <a class="btn btn-primary" href="javascript:void(0)" onclick="confirm('Do you want to delete this?')?this.parentElement.submit():null;">Delete</a>
+              </form>
+            <% }) %>
+          </ul>
+          
+
+    </div>
+  </body>
+</html>

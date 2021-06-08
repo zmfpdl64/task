@@ -10,12 +10,13 @@
         <li class="nav-item"><a href="/about" class="nav-link">포트폴리오 공유 게시판</a></li>
         <li class="nav-item"><a href="/posts" class="nav-link">졸업 작품 아카이브</a></li>
         <li class="nav-item"><a href="/about" class="nav-link">분야별 회사 정보 공유</a></li>
-        <li class="nav-item"><a href="/about" class="nav-link">분야별 회사 정보 공유</a></li>
+        
       </ul>
       <ul class="navbar-nav ml-auto">
         <% if(isAuthenticated && (value == '1')){ %>
           <% if(admin == "woojin") { %>
-            <li class="nav-item"><a href="/admin" class="nav-link">회원관리</a></li>
+            <li class="nav-item"><a href="/admin" class="nav-link">회원승인</a></li>
+            <li class="nav-item"><a href="/admin/management" class="nav-link">회원추방</a></li>
            <% } %>
           <li class="nav-item"><a href="/users/<%= currentUser.username %>" class="nav-link">내 계정</a></li>
           <li class="nav-item"><a href="/logout" class="nav-link">로그아웃</a></li>

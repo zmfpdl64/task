@@ -44,7 +44,6 @@ app.use(function(req,res,next){
   res.locals.admin = passport.c;
   res.locals.value = passport.d;
   res.locals.util = util;
-  console.log('난 유저값:', res.locals.value);
   
  
   next();
