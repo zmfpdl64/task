@@ -18,5 +18,18 @@ router.get('/', function(req, res) {
     })   
     });
 
-router.get('/')
+router.put('/:username', function(req,res) {  
+  User.findOneAndUpdate({username:req.params.username}, req.body.Value, function(err, user) {
+    if(err) return res.json(err);    
+    console.log(req.body)
+    console.log('난 권한값2:', user.Value);
+    user.Value = req.body.value;
+     console.log('난 권한값2:', user.Value);
+     console.log('난 유저값:', user);
+     
+     user.save();
+  });
+
+  res.redirect('/admin')
+ });
 module.exports = router;

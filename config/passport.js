@@ -22,6 +22,16 @@ passport.use('local-login',
       passReqToCallback : true
     },
     function(req, username, password, done) {
+      User.findOne({username:username}, function(err, user) {
+        if(err) return res.json(err);  
+        if(user.username == 'woojin'){
+          passport.d = 1;
+        }
+        else {
+          passport.d = user.Value; 
+        }
+       
+      });
       User.findOne({username:username} ,passport.c = username)
         .select({password:1})
         .exec(function(err, user) {         

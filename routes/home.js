@@ -52,6 +52,7 @@ router.post('/login',
 // Logout
 router.get('/logout', function(req, res) {
   req.logout();
+  passport.d = 0;
   res.redirect('/');
   
 });

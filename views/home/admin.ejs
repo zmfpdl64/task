@@ -13,13 +13,19 @@
       <P>회원 관리</p>
         <ul>
             <% contacts.forEach(function(contact) { %> <!-- 3 -->
+            <form action="/admin/<%= contact.username %>?_method=put"  method="post">
               <li>
                 <label class="col-sm-1 col-form-label"><storng>아이디 : </storng></label><%= contact.username %>   <br/>
                 <label class="col-sm-1 col-form-label"><storng>이  름 : </storng></label><%= contact.name %><br/>
                 <label class="col-sm-1 col-form-label"><storng>학생증 :</storng> </label><small>📁 <a href="/files2/<%= contact.card.serverFileName %>/<%= contact.card.originalFileName %>"><%= contact.card.originalFileName %></a> (<%= util.bytesToSize(contact.card.size) %>)</small>                         
+                <input type = "checkbox" id="value" name="value" value='1'>
+
               </li>
+              <a href = "/admin/<%= contact.username%>"><button type="submit" class="btn btn-primary">가입승인</button></a>
+            </form>
             <% }) %>
           </ul>
+          
 
     </div>
   </body>

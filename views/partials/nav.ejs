@@ -13,7 +13,7 @@
         <li class="nav-item"><a href="/about" class="nav-link">분야별 회사 정보 공유</a></li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <% if(isAuthenticated){ %>
+        <% if(isAuthenticated && (value == '1')){ %>
           <% if(admin == "woojin") { %>
             <li class="nav-item"><a href="/admin" class="nav-link">회원관리</a></li>
            <% } %>

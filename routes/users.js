@@ -20,6 +20,7 @@ router.post('/', upload.single('card'),async function(req, res){
   console.log('난 req.body.user1', req.body.user1  ); //출력안됨
   var card = req.file ? await File2.createNewInstance(req.file,req.body.user):undefined;
        req.body.card = card._id;
+       console.log('난 card:', card);
       console.log('난 card._id',card._id);
     User.create(req.body, function(err, user){   
     if(err){

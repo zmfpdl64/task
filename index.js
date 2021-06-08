@@ -3,7 +3,9 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
+var User = require('./models/User');
 var session = require('express-session');
+
 var passport = require('./config/passport');
 var util = require('./util');
 var app = express();
@@ -40,7 +42,10 @@ app.use(function(req,res,next){
   res.locals.isAuthenticated = req.isAuthenticated();
   res.locals.currentUser = req.user;
   res.locals.admin = passport.c;
+  res.locals.value = passport.d;
   res.locals.util = util;
+  console.log('난 유저값:', res.locals.value);
+  
  
   next();
 });
